@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="GameScanner.UI.Views.FrontPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Button Command="{Binding FindGamesCommand}" Content="{Binding FindGamesText}" Foreground="Green" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Calibri" FontSize="24" FontWeight="Bold"></Button>
+    </Grid>
+</UserControl>
