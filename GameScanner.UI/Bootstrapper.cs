@@ -5,7 +5,7 @@ using Prism.Modularity;
 using Modules;
 using HelloWorld.Views;
 using GameScanner.Logic.Interfaces;
-using GameScanner.Logic.SeleniumLogic;
+using GameScanner.Logic.Craigslist;
 
 namespace HelloWorld
 {

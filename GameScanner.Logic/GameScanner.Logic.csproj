@@ -35,9 +35,27 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="WebDriver">
+      <HintPath>..\Libraries\Selenium\WebDriver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Factories\DriverFactory.cs" />
+    <Compile Include="Common\Interfaces\IDriverFactory.cs" />
     <Compile Include="Common\GameOffer.cs" />
+    <Compile Include="Common\Managers\DriverManager.cs" />
+    <Compile Include="Common\Wrappers\Selenium\AlertWrapper.cs" />
+    <Compile Include="Common\Wrappers\Selenium\CookieJarWrapper.cs" />
+    <Compile Include="Common\Wrappers\Selenium\DriverWrapper.cs" />
+    <Compile Include="Common\Wrappers\Selenium\LogsWrapper.cs" />
+    <Compile Include="Common\Wrappers\Selenium\NavigationWrapper.cs" />
+    <Compile Include="Common\Wrappers\Selenium\OptionsWrapper.cs" />
+    <Compile Include="Common\Wrappers\Selenium\TargetLocatorWrapper.cs" />
+    <Compile Include="Common\Wrappers\Selenium\TimeoutsWrapper.cs" />
+    <Compile Include="Common\Wrappers\Selenium\WebElementWrapper.cs" />
+    <Compile Include="Common\Wrappers\Selenium\WindowWrapper.cs" />
+    <Compile Include="Helpers\SeleniumHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -51,18 +69,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SeleniumLogic\CraigslistSeleniumLogic.cs" />
+    <Compile Include="Craigslist\CraigslistSeleniumLogic.cs" />
     <Compile Include="Interfaces\ICraigslistSeleniumLogic.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\Selenium\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
