@@ -1,11 +1,6 @@
-﻿using GameScanner.Logic.Helpers;
-using OpenQA.Selenium;
+﻿using GameScanner.Logic.Common.Interfaces;
+using GameScanner.Logic.Helpers;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameScanner.Logic.Common.Managers
 {
@@ -16,10 +11,10 @@ namespace GameScanner.Logic.Common.Managers
 
         static DriverManager()
         {
-            ChromeDriverService = ChromeDriverService.CreateDefaultService();
+            ChromeDriverService = ChromeDriverService.CreateDefaultService(@"../../../Resources");
        }
 
-        public static IWebDriver RequestDriver()
+        public static IWebDriverWrapper RequestDriver()
         {
             if (DriverCount == 0)
             {

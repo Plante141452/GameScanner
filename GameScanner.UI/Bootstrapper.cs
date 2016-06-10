@@ -6,6 +6,7 @@ using Modules;
 using HelloWorld.Views;
 using GameScanner.Logic.Interfaces;
 using GameScanner.Logic.Craigslist;
+using GameScanner.Logic.Common.Factories;
 
 namespace HelloWorld
 {
@@ -14,6 +15,7 @@ namespace HelloWorld
         protected override DependencyObject CreateShell()
         {
             Container.RegisterType<ICraigslistSeleniumLogic, CraigslistSeleniumLogic>();
+            Container.RegisterType<IDriverFactory, DriverFactory>();
 
             return Container.Resolve<MainWindow>();
         }

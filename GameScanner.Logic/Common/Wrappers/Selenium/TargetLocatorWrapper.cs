@@ -1,9 +1,10 @@
-﻿using GameScanner.Logic.Helpers;
+﻿using GameScanner.Logic.Common.Interfaces;
+using GameScanner.Logic.Helpers;
 using OpenQA.Selenium;
 
 namespace GameScanner.Logic.Common.Wrappers.Selenium
 {
-    public class TargetLocatorWrapper : ITargetLocator
+    public class TargetLocatorWrapper : ITargetLocatorWrapper
     {
         private ITargetLocator _targetLocator;
 
@@ -12,7 +13,7 @@ namespace GameScanner.Logic.Common.Wrappers.Selenium
             _targetLocator = targetLocator;
         }
 
-        public IWebElement ActiveElement()
+        public IWebElementWrapper ActiveElement()
         {
             return _targetLocator.ActiveElement().ToWrapper();
         }
@@ -22,32 +23,32 @@ namespace GameScanner.Logic.Common.Wrappers.Selenium
             return _targetLocator.Alert().ToWrapper();
         }
 
-        public IWebDriver DefaultContent()
+        public IWebDriverWrapper DefaultContent()
         {
             return _targetLocator.DefaultContent().ToWrapper();
         }
 
-        public IWebDriver Frame(IWebElement frameElement)
+        public IWebDriverWrapper Frame(IWebElement frameElement)
         {
             return _targetLocator.Frame(frameElement).ToWrapper();
         }
 
-        public IWebDriver Frame(string frameName)
+        public IWebDriverWrapper Frame(string frameName)
         {
             return _targetLocator.Frame(frameName).ToWrapper();
         }
 
-        public IWebDriver Frame(int frameIndex)
+        public IWebDriverWrapper Frame(int frameIndex)
         {
             return _targetLocator.Frame(frameIndex).ToWrapper();
         }
 
-        public IWebDriver ParentFrame()
+        public IWebDriverWrapper ParentFrame()
         {
             return _targetLocator.ParentFrame().ToWrapper();
         }
 
-        public IWebDriver Window(string windowName)
+        public IWebDriverWrapper Window(string windowName)
         {
             return _targetLocator.Window(windowName).ToWrapper();
         }

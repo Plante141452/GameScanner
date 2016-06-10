@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebDriver">
       <HintPath>..\Libraries\Selenium\WebDriver.dll</HintPath>
     </Reference>
@@ -48,6 +49,9 @@
     <Compile Include="Common\Wrappers\Selenium\AlertWrapper.cs" />
     <Compile Include="Common\Wrappers\Selenium\CookieJarWrapper.cs" />
     <Compile Include="Common\Wrappers\Selenium\DriverWrapper.cs" />
+    <Compile Include="Common\Interfaces\IWebElementWrapper.cs" />
+    <Compile Include="Common\Interfaces\IWebDriverWrapper.cs" />
+    <Compile Include="Common\Interfaces\ITargetLocatorWrapper.cs" />
     <Compile Include="Common\Wrappers\Selenium\LogsWrapper.cs" />
     <Compile Include="Common\Wrappers\Selenium\NavigationWrapper.cs" />
     <Compile Include="Common\Wrappers\Selenium\OptionsWrapper.cs" />

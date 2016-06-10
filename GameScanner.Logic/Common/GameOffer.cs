@@ -2,7 +2,7 @@
 {
     public class GameOffer
     {
-        string Name { get; set; }
-        decimal Cost { get; set; }
+        public string Name { get; set; }
+        public double Cost { get; set; }
     }
 }

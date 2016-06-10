@@ -1,16 +1,20 @@
-﻿using GameScanner.Logic.Common.Wrappers.Selenium;
+﻿using GameScanner.Logic.Common.Interfaces;
+using GameScanner.Logic.Common.Wrappers.Selenium;
 using OpenQA.Selenium;
+using System;
 
 namespace GameScanner.Logic.Helpers
 {
     public static class SeleniumHelper
     {
-        public static IWebDriver ToWrapper(this IWebDriver driver)
+        #region Wrappers
+
+        public static IWebDriverWrapper ToWrapper(this IWebDriver driver)
         {
             return new DriverWrapper(driver);
         }
 
-        public static IWebElement ToWrapper(this IWebElement element)
+        public static IWebElementWrapper ToWrapper(this IWebElement element)
         {
             return new WebElementWrapper(element);
         }
@@ -25,7 +29,7 @@ namespace GameScanner.Logic.Helpers
             return new NavigationWrapper(navigation);
         }
 
-        public static ITargetLocator ToWrapper(this ITargetLocator targetLocator)
+        public static ITargetLocatorWrapper ToWrapper(this ITargetLocator targetLocator)
         {
             return new TargetLocatorWrapper(targetLocator);
         }
@@ -53,6 +57,26 @@ namespace GameScanner.Logic.Helpers
         public static IAlert ToWrapper(this IAlert alert)
         {
             return new AlertWrapper(alert);
+        }
+
+        #endregion
+
+        public static T Wait<T>(Func<T> exec, double seconds)
+        {
+            DateTime startTime = DateTime.Now;
+            TimeSpan waitTime = TimeSpan.FromSeconds(seconds);
+            while (DateTime.Now.Subtract(startTime) < waitTime)
+            {
+                try
+                {
+                    return exec();
+                }
+                catch
+                {
+                    //Do Nothing
+                }
+            }
+            throw new Exception(string.Format("Waited {0} seconds but could event did not occur", seconds));
         }
     }
 }

@@ -3,10 +3,12 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using GameScanner.Logic.Helpers;
+using GameScanner.Logic.Common.Interfaces;
+using System.Collections.Generic;
 
 namespace GameScanner.Logic.Common.Wrappers.Selenium
 {
-    public class WebElementWrapper : IWebElement
+    public class WebElementWrapper : IWebElementWrapper
     {
         private IWebElement _element;
 
@@ -60,14 +62,15 @@ namespace GameScanner.Logic.Common.Wrappers.Selenium
             _element.Click();
         }
 
-        public IWebElement FindElement(By by)
+        public IWebElementWrapper FindElement(By by, double seconds = 10)
         {
-            return _element.FindElement(by).ToWrapper();
+            return SeleniumHelper.Wait(() => _element.FindElement(by), seconds).ToWrapper();
         }
 
-        public ReadOnlyCollection<IWebElement> FindElements(By by)
+        public ReadOnlyCollection<IWebElementWrapper> FindElements(By by, double seconds = 10)
         {
-            return new ReadOnlyCollection<IWebElement>(_element.FindElements(by).Select(o => o.ToWrapper()).ToList());
+            IList<IWebElementWrapper> elements = SeleniumHelper.Wait(() => _element.FindElements(by), seconds).Select(o => o.ToWrapper()).ToList();
+            return new ReadOnlyCollection<IWebElementWrapper>(elements);
         }
 
         public string GetAttribute(string attributeName)
